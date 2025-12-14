@@ -2,16 +2,11 @@ import streamlit as st
 import sqlite3
 from datetime import datetime
 import pandas as pd
-
-# ======================
 # CONFIG
-# ======================
 DB_PATH = "database.db"
-ADMIN_PASSWORD = "admin123"  # demo password (academic use only)
-
-# ======================
+ADMIN_PASSWORD = "admin123"
 # DATABASE INIT
-# ======================
+
 def init_db():
     conn = sqlite3.connect(DB_PATH)
     c = conn.cursor()
@@ -28,10 +23,7 @@ def init_db():
     conn.close()
 
 init_db()
-
-# ======================
 # STREAMLIT UI
-# ======================
 st.set_page_config(
     page_title="Security Awareness Training System",
     page_icon="🔐"
@@ -40,17 +32,12 @@ st.set_page_config(
 st.title("🔐 Security Awareness Training System")
 st.caption("Phishing Simulation & Awareness Monitoring (Educational Purpose)")
 
-# ======================
 # ROLE SELECTION
-# ======================
 role = st.radio(
     "Select your role",
     ["👨‍💼 Employee", "🛡️ Admin"]
 )
-
-# ==================================================
 # EMPLOYEE FLOW
-# ==================================================
 if role == "👨‍💼 Employee":
     st.subheader("🎣 Corporate Login Page (Simulation)")
 
@@ -82,9 +69,7 @@ if role == "👨‍💼 Employee":
         else:
             st.warning("Please fill in all required fields.")
 
-# ==================================================
 # ADMIN FLOW
-# ==================================================
 if role == "🛡️ Admin":
     st.subheader("🛡️ Admin Authentication")
 
