@@ -2,7 +2,6 @@ import streamlit as st
 import sqlite3
 from datetime import datetime
 
-# Khởi tạo database
 def init_db():
     conn = sqlite3.connect("database.db")
     c = conn.cursor()
@@ -25,7 +24,7 @@ st.set_page_config(page_title="Company Secure Login", page_icon="🔐")
 st.title("🔐 Company Internal System")
 st.caption("Security Awareness Training Simulation")
 
-user_id = "EMP1023"  # Giả lập từ link email phishing
+user_id = "EMP1023" 
 email = st.text_input("Corporate Email")
 password = st.text_input("Password", type="password")
 
@@ -45,6 +44,6 @@ if st.button("Login"):
         conn.commit()
         conn.close()
 
-        st.error("⚠️ This was a phishing simulation. You have submitted credentials.")
+        st.error("⚠️ This was a phishing. You have submitted credentials.")
     else:
         st.warning("Please enter email and password.")
